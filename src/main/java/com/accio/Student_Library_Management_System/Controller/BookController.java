@@ -1,7 +1,8 @@
 package com.accio.Student_Library_Management_System.Controller;
 
-import com.accio.Student_Library_Management_System.Models.Student;
-import com.accio.Student_Library_Management_System.Services.StudentService;
+
+import com.accio.Student_Library_Management_System.Models.Book;
+import com.accio.Student_Library_Management_System.Services.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -9,14 +10,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("student")
-public class StudentController {
+@RequestMapping("book")
+public class BookController {
 
     @Autowired
-    StudentService studentService;
+    BookService bookService;
     @PostMapping("/add")
-    public String createStudent(@RequestBody Student student){
+    public String addBook(@RequestBody Book book){
 
-        return studentService.createStudent(student);
+        return bookService.addBook(book);
     }
 }
