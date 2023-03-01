@@ -3,8 +3,9 @@ package com.accio.Student_Library_Management_System.Models;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "student")
+@Table(name="student")
 public class Student {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -14,19 +15,30 @@ public class Student {
     @Column(unique = true)
     private String email;
 
-    private String mobileNo;
+    private String mobNo;
 
     private int age;
 
     private String country;
 
 
-
     //Plain syntax for bidirectional mapping
-    //Name of variable of the Parent Entity that you have written in child class foreign key attr.
-    @OneToOne(mappedBy = "studentVariableName", cascade = CascadeType.ALL)
-    private Card card;
 
+    //Name of variable of the Parent Entity that you have written in child class foreign key attr.
+    @OneToOne(mappedBy = "studentVariableName",cascade = CascadeType.ALL)
+    private Card card;
+    /*
+        Steps to find that variable
+
+        1. Go the child class (In this case)
+        2. Out of all the attributes select the foreign key attribute that is helping you connect
+        with parent class
+        (Ref :  @OneToOne
+                @JoinColumn
+                private Student studentVariableName;
+        )
+        3. Choose the variable name of the parentEnty (reference : studentVariableName)
+     */
 
 
     public Card getCard() {
@@ -64,12 +76,12 @@ public class Student {
         this.email = email;
     }
 
-    public String getMobileNo() {
-        return mobileNo;
+    public String getMobNo() {
+        return mobNo;
     }
 
-    public void setMobileNo(String mobileNo) {
-        this.mobileNo = mobileNo;
+    public void setMobNo(String mobNo) {
+        this.mobNo = mobNo;
     }
 
     public int getAge() {

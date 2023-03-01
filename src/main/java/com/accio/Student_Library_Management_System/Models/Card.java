@@ -10,52 +10,57 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name = "card")
+@Table(name="card")
 public class Card {
 
-
-
+    //Plan is to save this card in Db.
+    //Before saving I have to set its attributes : Rule 1
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private int id;  //Its auto generated
 
-    @CreationTimestamp //Auto timestamp the time when on entry is created
-    private Date createdOn;
+    @CreationTimestamp //Auto timestamp the time when an entry is created
+    private Date createdOn; //Its auto generated
 
-    @UpdateTimestamp // Sets time when an entry is updated
-    private Date updateOn;
-
-
+    @UpdateTimestamp //Sets time when an entry is updated.
+    private Date updatedOn; //Its auto generated
 
     @Enumerated(value = EnumType.STRING)
-    private CardStatus cardStatus;
+    private CardStatus cardStatus; //SEt this attribute
 
 
     @OneToOne
     @JoinColumn
-    private Student studentVariableName;
-    //This variable is used in the parent class.
+    private Student studentVariableName; //This varible is used in the parent class.
     // while doing the bidirectional mapping
 
 
-
-    //card is parent wrt to book
-    @OneToMany(mappedBy = "card" , cascade = CascadeType.ALL)
-    private List<Book> bookIssued= new ArrayList<>();
-
+    //Card is parent wrt to Book
+    @OneToMany(mappedBy = "card",cascade = CascadeType.ALL)
+    List<Book> booksIssued = new ArrayList<>();
 
 
-    public Card() {
-        //bookIssued= new ArrayList<>();
+    //Connecting the card class to the transaction
+    //Bidireectional Mapping
+    @OneToMany(mappedBy = "card", cascade = CascadeType.ALL)
+    private List<Transactions> transactionsList = new ArrayList<>();
+
+
+    public List<Book> getBooksIssued() {
+        return booksIssued;
     }
 
-    public List<Book> getBookIssued() {
-        return bookIssued;
+    public void setBooksIssued(List<Book> booksIssued) {
+        this.booksIssued = booksIssued;
     }
 
-    public void setBookIssued(List<Book> bookIssued) {
-        this.bookIssued = bookIssued;
+    public List<Transactions> getTransactionsList() {
+        return transactionsList;
+    }
+
+    public void setTransactionsList(List<Transactions> transactionsList) {
+        this.transactionsList = transactionsList;
     }
 
     public Student getStudentVariableName() {
@@ -64,6 +69,9 @@ public class Card {
 
     public void setStudentVariableName(Student studentVariableName) {
         this.studentVariableName = studentVariableName;
+    }
+
+    public Card() {
     }
 
     public int getId() {
@@ -82,12 +90,12 @@ public class Card {
         this.createdOn = createdOn;
     }
 
-    public Date getUpdateOn() {
-        return updateOn;
+    public Date getUpdatedOn() {
+        return updatedOn;
     }
 
-    public void setUpdateOn(Date updateOn) {
-        this.updateOn = updateOn;
+    public void setUpdatedOn(Date updatedOn) {
+        this.updatedOn = updatedOn;
     }
 
     public CardStatus getCardStatus() {

@@ -6,25 +6,28 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "author")
+@Table(name="author")
 public class Author {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     private String name;
 
-    private String country;
-
     private int age;
 
-    //bidirectional mapping
-    @OneToMany(mappedBy = "author" ,cascade = CascadeType.ALL)
-    private List<Book> bookWritten;
+    private String country;
 
+    private double rating;
+
+    //This annotation I am writing in the parent class :
+    //Part of bidirectional mapping
+    @OneToMany(mappedBy = "author",cascade = CascadeType.ALL)
+    private List<Book> booksWritten;
 
     public Author() {
-        bookWritten=new ArrayList<>();
+        booksWritten = new ArrayList<>();
     }
 
     public int getId() {
@@ -43,14 +46,6 @@ public class Author {
         this.name = name;
     }
 
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
     public int getAge() {
         return age;
     }
@@ -59,11 +54,27 @@ public class Author {
         this.age = age;
     }
 
-    public List<Book> getBookWritten() {
-        return bookWritten;
+    public String getCountry() {
+        return country;
     }
 
-    public void setBookWritten(List<Book> bookWritten) {
-        this.bookWritten = bookWritten;
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public double getRating() {
+        return rating;
+    }
+
+    public void setRating(double rating) {
+        this.rating = rating;
+    }
+
+    public List<Book> getBooksWritten() {
+        return booksWritten;
+    }
+
+    public void setBooksWritten(List<Book> booksWritten) {
+        this.booksWritten = booksWritten;
     }
 }
