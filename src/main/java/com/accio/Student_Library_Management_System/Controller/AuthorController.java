@@ -3,17 +3,16 @@ package com.accio.Student_Library_Management_System.Controller;
 
 import com.accio.Student_Library_Management_System.DTOs.AuthorEntryDto;
 import com.accio.Student_Library_Management_System.DTOs.AuthorResponseDto;
-import com.accio.Student_Library_Management_System.Models.Author;
 import com.accio.Student_Library_Management_System.Services.AuthorService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("author")
 public class AuthorController {
-
-    //    / is optional : you want to write you can
-    // otherwise not required
 
 
     @Autowired
@@ -21,12 +20,20 @@ public class AuthorController {
 
     @PostMapping("/add")
     public String addAuthor(@RequestBody AuthorEntryDto authorEntryDto){
-        return authorService.createAuthor(authorEntryDto);
+        try {
+            return authorService.createAuthor(authorEntryDto);
+        }catch (Exception e){
+            return "Exception occur";
+        }
     }
 
     @GetMapping("/getAuthor")
-    public AuthorResponseDto getAuthor(@RequestParam("authorId")Integer authorId){
-        return authorService.getAuthor(authorId);
+    public String getAuthor(@RequestParam("authorId")Integer authorId)throws Exception {
+        try{
+            return authorService.getAuthor(authorId).toString();
+        }catch (Exception e){
+            return "Exception found";
+        }
     }
 
 

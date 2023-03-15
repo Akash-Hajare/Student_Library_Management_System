@@ -20,7 +20,13 @@ public class BookController {
     @PostMapping("/add")
     public String addBook(@RequestBody BookRequestDto bookRequestDto){
 
-        return bookService.addBook(bookRequestDto);
+       try{
+           String response= bookService.addBook(bookRequestDto);
+           return response;
+       }catch (Exception e ){
+           return "Exception occured";
+       }
+
 
     }
 

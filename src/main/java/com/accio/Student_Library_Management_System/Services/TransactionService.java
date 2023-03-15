@@ -107,7 +107,7 @@ public class TransactionService {
         return "Book issued successfully";
     }
 
-    public String getTransactions(int bookId,int cardId){
+    public String getTransactions(int bookId,int cardId) throws Exception{
 
         List<Transactions> transactionsList = transactionRepository.getTransactionsForBookAndCard(bookId,cardId);
 

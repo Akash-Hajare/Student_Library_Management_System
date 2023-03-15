@@ -1,7 +1,8 @@
 package com.accio.Student_Library_Management_System.Models;
 
-import jakarta.persistence.*;
+//import jakarta.persistence.*;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 

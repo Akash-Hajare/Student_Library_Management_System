@@ -20,7 +20,7 @@ public class AuthorService {
     AuthorRepository authorRepository;
 
 
-    public String createAuthor(AuthorEntryDto authorEntryDto){
+    public String createAuthor(AuthorEntryDto authorEntryDto) throws Exception{
 
 
 
@@ -42,7 +42,7 @@ public class AuthorService {
         authorRepository.save(author);
         return "Author added successfully";
     }
-    public AuthorResponseDto getAuthor(Integer authorId){
+    public AuthorResponseDto getAuthor(Integer authorId) throws Exception{
 
         Author author =  authorRepository.findById(authorId).get();
         AuthorResponseDto authorResponseDto = new AuthorResponseDto();

@@ -1,9 +1,9 @@
 package com.accio.Student_Library_Management_System.Models;
 
 import com.accio.Student_Library_Management_System.Enums.TransactionStatus;
-import jakarta.persistence.*;
+//import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
-
+import javax.persistence.*;
 import java.util.Date;
 import java.util.UUID;
 

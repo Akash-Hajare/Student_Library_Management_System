@@ -14,7 +14,7 @@ public class StudentService {
     @Autowired
     StudentRepository studentRepository;
 
-    public String createStudent(Student student){
+    public String createStudent(Student student) throws Exception{
 
         //Student from the postman is already the basic attributes set.
 
@@ -41,7 +41,7 @@ public class StudentService {
     }
 
 
-    public String findNameByEmail(String email){
+    public String findNameByEmail(String email) throws Exception{
 
         Student student = studentRepository.findByEmail(email);
 
@@ -49,7 +49,7 @@ public class StudentService {
     }
 
 
-    public String updateMobNo(StudentUpdateMobRequestDto studentReq){
+    public String updateMobNo(StudentUpdateMobRequestDto studentReq) throws Exception{
 
 
 

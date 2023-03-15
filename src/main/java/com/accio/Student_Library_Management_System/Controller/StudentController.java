@@ -16,20 +16,34 @@ public class StudentController {
     @PostMapping("/add")
     public String createStudent(@RequestBody Student student){
 
-        return studentService.createStudent(student);
+       try{
+           return studentService.createStudent(student);
+       }catch (Exception e){
+           return "exception found";
+       }
     }
 
 
     @GetMapping("/get_user")
     public String getNameByEmail(@RequestParam("email")String email){
 
-        return studentService.findNameByEmail(email);
+       try{
+           return studentService.findNameByEmail(email);
+       }
+       catch (Exception e){
+           return "exception found";
+       }
     }
 
 
     @PutMapping("/update_mob")
     public String updateMob(@RequestBody StudentUpdateMobRequestDto studentReqDto){
-        return studentService.updateMobNo(studentReqDto);
+       try{
+           return studentService.updateMobNo(studentReqDto);
+       }
+       catch (Exception e){
+           return "exception found";
+       }
     }
 
 }

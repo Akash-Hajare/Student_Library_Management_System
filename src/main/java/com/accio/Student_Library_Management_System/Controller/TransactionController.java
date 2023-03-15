@@ -30,6 +30,10 @@ public class TransactionController {
     public String getTransactionEntry(@RequestParam("bookId")Integer bookId,@RequestParam
             ("cardId")Integer cardId){
 
-        return transactionService.getTransactions(bookId,cardId);
+       try{
+           return transactionService.getTransactions(bookId,cardId);
+       }catch (Exception e){
+           return "exception occured";
+       }
     }
 }

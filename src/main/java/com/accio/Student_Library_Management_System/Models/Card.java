@@ -1,10 +1,10 @@
 package com.accio.Student_Library_Management_System.Models;
 
 import com.accio.Student_Library_Management_System.Enums.CardStatus;
-import jakarta.persistence.*;
+//import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;

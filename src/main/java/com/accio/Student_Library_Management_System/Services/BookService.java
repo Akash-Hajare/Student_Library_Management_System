@@ -17,7 +17,7 @@ public class BookService {
     AuthorRepository authorRepository;
 
 
-    public String addBook(BookRequestDto bookRequestDto){
+    public String addBook(BookRequestDto bookRequestDto) throws Exception{
 
         //I want to get the AuthorEntity ???
         int authorId  = bookRequestDto.getAuthorId();
